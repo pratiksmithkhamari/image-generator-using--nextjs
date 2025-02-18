@@ -19,9 +19,9 @@ export default function Home() {
             filter: "blur(0px)",
           }}
           transition={{ duration: 0.35, delay: 0 }}
-          className="text-4xl sm:text-6xl font-bold"
+          className="text-4xl sm:text-6xl font-bold "
         >
-          StableMax
+          Photogenic
         </motion.h1>
         <motion.p
           initial={{

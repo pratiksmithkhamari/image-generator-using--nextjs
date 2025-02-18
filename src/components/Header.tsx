@@ -18,29 +18,51 @@ export default function Header() {
   }, [status, session]);
 
   return (
-    <div className="fixed top-0 w-full h-[60px] bg-black border-b border-white/60 p-3 flex justify-between items-center z-50">
-      <Link href="/">
-        <h2 className="font-bold text-xl">StableMax</h2>
+    <header className="fixed top-0 left-0 right-0 h-[60px] bg-black/95 backdrop-blur-sm border-b border-white/10 px-4 flex justify-between items-center z-50 transition-all duration-300 hover:bg-black">
+      <Link href="/" className="transition-transform hover:scale-105">
+        <h2 className="font-bold text-xl bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
+          Photogenic
+        </h2>
       </Link>
-      {initialLoading && status === "loading" ? (
-        <BiLoaderCircle className="animate-spin" />
+
+      {initialLoading ? (
+        <div className="flex items-center justify-center w-8 h-8">
+          <BiLoaderCircle className="animate-spin text-white/70 w-6 h-6" />
+        </div>
       ) : !session ? (
-        <div className="__menu">
-          <Button onClick={() => signIn("google")}>Login</Button>
+        <div className="flex items-center">
+          <Button
+            onClick={() => signIn("google")}
+            className="bg-white text-black hover:bg-gray-200 transition-all duration-300 transform hover:scale-105 active:scale-95"
+          >
+            Login with Google
+          </Button>
         </div>
       ) : (
-        <div className="flex gap-3 justify-center items-center">
-          <Button onClick={() => signOut()} variant="destructive">
+        <div className="flex gap-4 items-center">
+          <Button
+            onClick={() => signOut()}
+            variant="destructive"
+            className="transition-all duration-300 transform hover:scale-105 active:scale-95"
+          >
             Logout
           </Button>
-          <Link href="/profile">
-            <Avatar>
+          <Link
+            href="/profile"
+            className="transition-transform hover:scale-110"
+          >
+            <Avatar className="border-2 border-white/20 hover:border-white/50 transition-all duration-300">
               <AvatarImage src={session.user?.image || ""} />
-              <AvatarFallback>CN</AvatarFallback>
+              <AvatarFallback className="bg-gray-700">
+                {session.user?.name
+                  ?.split(" ")
+                  .map((n) => n[0])
+                  .join("") || "U"}
+              </AvatarFallback>
             </Avatar>
           </Link>
         </div>
       )}
-    </div>
+    </header>
   );
 }

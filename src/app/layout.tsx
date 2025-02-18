@@ -18,16 +18,16 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "StableMax - Generate Images for FREE",
+  title: "Photogenic - Generate Images for FREE",
   description:
-    "Generate stunning images from text using AI models for free with StableMax. Turn your ideas into visual art instantly.",
+    "Generate stunning images from text using AI models for free with Photogenic. Turn your ideas into visual art instantly.",
   openGraph: {
-    title: "StableMax - Free AI Image Generation",
+    title: "Photogenic - Free AI Image Generation",
     description: "Turn your text into images with our free AI-powered tool",
   },
   twitter: {
     card: "summary_large_image",
-    title: "StableMax - Free AI Image Generation",
+    title: "Photogenic - Free AI Image Generation",
     description: "Turn your text into images with our free AI-powered tool",
   },
 };
@@ -42,7 +42,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased relative max-w-7xl mx-auto`}
       >
-        <ThemeProvider attribute="class" defaultTheme="dark">
+        <ThemeProvider attribute="class" defaultTheme="">
           <Provider>
             <Header />
             {children}
